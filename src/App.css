@@ -5,4 +5,10 @@
 
 body {
 	font-family: OpenSansCondensed;
+	padding: 20px 60px;
+}
+
+a {
+	text-decoration: none;
+	color: #111;
 }
