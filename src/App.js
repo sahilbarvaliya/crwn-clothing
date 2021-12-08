@@ -13,7 +13,7 @@ import {
 import {
 	auth,
 	createUserProfileDocument,
-	signInWithGoogle,
+	// signInWithGoogle,
 } from "./components/firebase/firebase.utils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
@@ -23,7 +23,6 @@ class App extends React.Component {
 
 	componentDidMount() {
 		const { setCurrentUser } = this.props;
-		console.log("he", this.props);
 
 		this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
