@@ -7,12 +7,7 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 
 import Header from "./components/header/header.component";
 import SingInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-	Navigate,
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import {
 	auth,
 	createUserProfileDocument,
@@ -51,25 +46,25 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Router>
-					<Header />
-					<Routes>
-						<Route exact path="/" element={<HomePage />} />
-						<Route path="/shop" element={<ShopPage />} />
-						<Route exact path="/checkout" element={<CheckoutPage />} />
-						<Route
-							exact
-							path="/signin"
-							element={
-								this.props.currentUser ? (
-									<Navigate to="/" />
-								) : (
-									<SingInAndSignUpPage />
-								)
-							}
-						/>
-					</Routes>
-				</Router>
+				<Header />
+				<Switch>
+					<Route exact path="/">
+						<HomePage />
+					</Route>
+					<Route path="/shop">
+						<ShopPage />
+					</Route>
+					<Route exact path="/checkout">
+						<CheckoutPage />
+					</Route>
+					<Route exact path="/signin">
+						{this.props.currentUser ? (
+							<Redirect to="/" />
+						) : (
+							<SingInAndSignUpPage />
+						)}
+					</Route>
+				</Switch>
 			</div>
 		);
 	}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./menu-item.style.scss";
-import { withRouter } from "../../assets/withRouter";
+import { withRouter } from "react-router-dom";
 
 function MenuItem({ title, imageUrl, size, history, linkUrl, match }) {
 	return (
